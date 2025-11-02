@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/toolkit';
-import type { AuthState, LoginFormData, RegisterFormData, LoginResponse, RegisterResponse, User } from '../types';
-import { authApi } from '../api';
+import type { AuthState, LoginCredentials, RegisterFormData, LoginResponse, User } from '../../types/auth.types';
+import { authService } from '../../services/authService';
 
 const initialState: AuthState = {
   user: null,
-  token: localStorage.getItem('auth_token'),
-  isAuthenticated: !!localStorage.getItem('auth_token'),
+  token: localStorage.getItem('token'),
+  isAuthenticated: !!localStorage.getItem('token'), // Set true if token exists
   loading: false,
   error: null,
 };
@@ -13,12 +13,12 @@ const initialState: AuthState = {
 // ============ LOGIN ASYNC THUNKS ============
 export const loginUser = createAsyncThunk(
   'auth/login',
-  async (credentials: LoginFormData, { rejectWithValue }) => {
+  async (credentials: LoginCredentials, { rejectWithValue }) => {
     try {
-      const response = await authApi.login(credentials);
+      const response = await authService.login(credentials);
       return response;
     } catch (error: any) {
-      return rejectWithValue(error.message || 'Login failed');
+      return rejectWithValue(error.response?.data?.message || 'Login failed');
     }
   }
 );
@@ -27,10 +27,10 @@ export const loginWithGoogle = createAsyncThunk(
   'auth/loginWithGoogle',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await authApi.loginWithGoogle();
+      const response = await authService.loginWithGoogle();
       return response;
     } catch (error: any) {
-      return rejectWithValue(error.message || 'Google login failed');
+      return rejectWithValue(error.response?.data?.message || 'Google login failed');
     }
   }
 );
@@ -39,10 +39,10 @@ export const loginWithGithub = createAsyncThunk(
   'auth/loginWithGithub',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await authApi.loginWithGithub();
+      const response = await authService.loginWithGithub();
       return response;
     } catch (error: any) {
-      return rejectWithValue(error.message || 'GitHub login failed');
+      return rejectWithValue(error.response?.data?.message || 'GitHub login failed');
     }
   }
 );
@@ -52,38 +52,31 @@ export const registerUser = createAsyncThunk(
   'auth/register',
   async (userData: RegisterFormData, { rejectWithValue }) => {
     try {
-      const response = await authApi.register(userData);
+      const response = await authService.register(userData);
       return response;
     } catch (error: any) {
-      return rejectWithValue(error.message || 'Registration failed');
+      return rejectWithValue(error.response?.data?.message || 'Registration failed');
     }
   }
 );
 
-// ============ LOGOUT ASYNC THUNK ============
+// ============ LOGOUT ============
 export const logoutUser = createAsyncThunk(
   'auth/logout',
   async () => {
-    await authApi.logout();
+    await authService.logout();
   }
 );
 
 // ============ CHECK AUTH STATUS ============
 export const checkAuthStatus = createAsyncThunk(
   'auth/checkStatus',
-  async (_, { getState, rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const state = getState() as { auth: AuthState };
-      const token = state.auth.token;
-      
-      if (!token) {
-        throw new Error('No token found');
-      }
-      
-      const user = await authApi.getCurrentUser(token);
-      return user;
+      const response = await authService.getCurrentUser();
+      return response;
     } catch (error: any) {
-      return rejectWithValue(error.message || 'Authentication check failed');
+      return rejectWithValue(error.response?.data?.message || 'Authentication check failed');
     }
   }
 );
@@ -100,21 +93,12 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.isAuthenticated = true;
     },
-    setCredentials: (
-      state,
-      action: PayloadAction<{ user: User; token: string }>
-    ) => {
-      state.isAuthenticated = true;
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      localStorage.setItem('auth_token', action.payload.token);
-    },
     clearAuth: (state) => {
       state.user = null;
       state.token = null;
       state.isAuthenticated = false;
       state.error = null;
-      localStorage.removeItem('auth_token');
+      localStorage.removeItem('token');
     },
   },
   extraReducers: (builder) => {
@@ -130,7 +114,7 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.error = null;
-        localStorage.setItem('auth_token', action.payload.token);
+        localStorage.setItem('token', action.payload.token);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
@@ -150,7 +134,7 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.error = null;
-        localStorage.setItem('auth_token', action.payload.token);
+        localStorage.setItem('token', action.payload.token);
       })
       .addCase(loginWithGoogle.rejected, (state, action) => {
         state.loading = false;
@@ -169,7 +153,7 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.error = null;
-        localStorage.setItem('auth_token', action.payload.token);
+        localStorage.setItem('token', action.payload.token);
       })
       .addCase(loginWithGithub.rejected, (state, action) => {
         state.loading = false;
@@ -182,16 +166,15 @@ const authSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(registerUser.fulfilled, (state, action: PayloadAction<RegisterResponse>) => {
+      .addCase(registerUser.fulfilled, (state, action: PayloadAction<LoginResponse>) => {
         state.loading = false;
-        // Option 1: Auto-login after registration (if API returns token)
-        if (action.payload.token && action.payload.user) {
+        // Auto-login after successful registration
+        if (action.payload.token) {
           state.isAuthenticated = true;
           state.user = action.payload.user;
           state.token = action.payload.token;
-          localStorage.setItem('auth_token', action.payload.token);
+          localStorage.setItem('token', action.payload.token);
         }
-        // Option 2: Just show success, user needs to login manually
         state.error = null;
       })
       .addCase(registerUser.rejected, (state, action) => {
@@ -208,7 +191,7 @@ const authSlice = createSlice({
         state.isAuthenticated = false;
         state.loading = false;
         state.error = null;
-        localStorage.removeItem('auth_token');
+        localStorage.removeItem('token');
       });
 
     // ========== CHECK AUTH STATUS ==========
@@ -226,10 +209,10 @@ const authSlice = createSlice({
         state.isAuthenticated = false;
         state.user = null;
         state.token = null;
-        localStorage.removeItem('auth_token');
+        localStorage.removeItem('token');
       });
   },
 });
 
-export const { clearError, setUser, setCredentials, clearAuth } = authSlice.actions;
+export const { clearError, setUser, clearAuth } = authSlice.actions;
 export default authSlice.reducer;

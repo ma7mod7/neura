@@ -1,0 +1,22 @@
+// ====================================
+// FILE: src/app/store.ts
+// ====================================
+
+import { configureStore } from '@reduxjs/toolkit';
+import authReducer from '../features/auth/slice/authSlice';
+
+export const store = configureStore({
+  reducer: {
+    auth: authReducer,
+    // Add other feature slices here as you build them
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
+});
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+

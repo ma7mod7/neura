@@ -1,24 +1,36 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './styles/index.css'
-import App from './App.tsx'
-import { store } from './store/store.ts'
-import { Provider } from 'react-redux'
-import { BrowserRouter } from "react-router";
+// ====================================
+// FILE: src/main.tsx
+// ====================================
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { store } from './app/store';
+import App from './app/App';
+import './styles/index.css';
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+      staleTime: 5 * 60 * 1000, // 5 minutes
+    },
+  },
+});
 
-
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-      <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </QueryClientProvider>
     </Provider>
-    </BrowserRouter>
-  </StrictMode>
-)
+  </React.StrictMode>
+);
+
+
