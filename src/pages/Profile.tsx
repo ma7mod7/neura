@@ -165,11 +165,11 @@ export default function ProfilePage() {
   const deadlines = mockDeadlines;
   const [activityData] = useState<ActivityData>(generateMockActivityData());
   const [darkMode, setDarkMode] = useState(false);
+  const secondaryTextClass = darkMode ? "text-gray-400" : "text-gray-600";
   const navigate = useNavigate();
 
   const toggleTheme = () => setDarkMode(!darkMode);
 
- 
   const handleLogout = () => {
     localStorage.removeItem("auth_token");
     navigate("/home", { replace: true });
@@ -195,6 +195,31 @@ export default function ProfilePage() {
             <div className="flex items-center gap-2">
               <div className="text-5xl font-bold text-blue-600">∞</div>
               <span className="text-2xl font-bold text-blue-600">Neura</span>
+            </div>
+            <div className="hidden md:flex items-center space-x-8">
+              <button onClick={() => navigate("/dashboard")} className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                Home
+              </button>
+              <button
+                className={`${secondaryTextClass} hover:text-blue-600 transition-colors`}
+              >
+                Courses
+              </button>
+              <button
+                className={`${secondaryTextClass} hover:text-blue-600 transition-colors`}
+              >
+                Problems
+              </button>
+              <button
+                className={`${secondaryTextClass} hover:text-blue-600 transition-colors`}
+              >
+                Community
+              </button>
+              <button
+                className={`${secondaryTextClass} hover:text-blue-600 transition-colors`}
+              >
+                Resources
+              </button>
             </div>
 
             {/* Right Side Icons */}
