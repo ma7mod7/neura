@@ -5,7 +5,7 @@ import RegisterPage from '../features/login/pages/RegisterPage';
 import { useAppSelector } from './hooks';
 import HomePage from '../features/home/pages/HomePage';
 import { DashboardPage } from '../features/login/pages/DashboardPage';
-
+import ProfilePage from '../pages/Profile';
 // Protected Route Component
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -106,7 +106,14 @@ export const AppRoutes: React.FC = () => {
           </ProtectedRoute>
         }
       />
-      
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
+        }
+      />
       {/* Catch all - redirect based on auth status */}
       <Route path="*" element={<HomeRedirect />} />
     </Routes>
