@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import { Badge } from "../components/ui/badge";
-import { Facebook, Linkedin, Github } from "lucide-react";
+import { Facebook, Linkedin, Github,SearchCode, Users2 } from "lucide-react";
+// import { FaMagnifyingGlassCode, FaChildren } from "react-icons/fa6";
 import {
   Trophy,
   Target,
@@ -71,11 +72,11 @@ interface Deadline {
 // Mock data
 const mockUserProfile: UserProfile = {
   id: "1",
-  name: "Alex Thompson",
-  username: "alexcodes",
+  name: "Mahmoud_Emad_Eldin",
+  username: "mahmoud_7oka",
   rank: "Expert",
   avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=currentuser",
-  bio: "Passionate problem solver | Competitive programmer | Love algorithms and data structures",
+  bio: "",
 };
 
 const mockUserStats: UserStats = {
@@ -139,13 +140,19 @@ const mockDeadlines: Deadline[] = [
   },
 ];
 
-const generateMockActivityData = (): ActivityData => {
+ const generateMockActivityData = (): ActivityData => {
   const data: ActivityData = {};
   const today = new Date();
+  
+  // Start from January 1st of current year
+  const startOfYear = new Date(today.getFullYear(), 0, 1);
+  
+  // Calculate days from start of year to today
+  const daysDiff = Math.floor((today.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24));
 
-  for (let i = 0; i < 84; i++) {
-    const date = new Date(today);
-    date.setDate(date.getDate() - i);
+  for (let i = 0; i <= daysDiff; i++) {
+    const date = new Date(startOfYear);
+    date.setDate(date.getDate() + i);
     const dateStr = date.toISOString().split("T")[0];
 
     const random = Math.random();
@@ -197,7 +204,10 @@ export default function ProfilePage() {
               <span className="text-2xl font-bold text-blue-600">Neura</span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <button onClick={() => navigate("/dashboard")} className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+              <button
+                onClick={() => navigate("/dashboard")}
+                className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
+              >
                 Home
               </button>
               <button
@@ -280,39 +290,43 @@ export default function ProfilePage() {
         <div className="space-y-6">
           {/* Profile Header Section */}
           <div
-            className={`rounded-lg p-6 transition-colors ${
+            className={`rounded-2xl p-6 transition-colors ${
               darkMode
-                ? "bg-gray-900 border border-gray-800"
+                 ? "bg-gray-900 border border-gray-800"
                 : "bg-white border border-gray-200"
             }`}
           >
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="flex flex-col items-center md:items-start">
-                <Avatar className="h-24 w-24">
+            <div className="flex items-start gap-6">
+              <div className="flex flex-col items-center">
+                <Avatar className="h-20 w-20">
                   <AvatarImage src={profile.avatar} alt={profile.name} />
                   <AvatarFallback>{profile.name.charAt(0)}</AvatarFallback>
                 </Avatar>
-                <Badge className="mt-3 bg-blue-600 text-white hover:bg-blue-700">
+                <Badge className="bg-yellow-600 text-white hover:bg-yellow-700 mt-4">
                   <Award className="w-3 h-3 mr-1" />
                   {profile.rank}
                 </Badge>
               </div>
 
               <div className="flex-1">
-                <h1
-                  className={`text-3xl font-bold mb-1 ${
-                    darkMode ? "text-white" : "text-gray-900"
-                  }`}
-                >
-                  {profile.name}
-                </h1>
+                <div className="flex items-center justify-between mb-2">
+                  <h1
+                    className={`text-2xl font-bold ${
+                      darkMode ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    {profile.name}
+                  </h1>
+                </div>
+
                 <p
-                  className={`mb-2 ${
+                  className={`text-sm mb-2 ${
                     darkMode ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
                   @{profile.username}
                 </p>
+
                 {profile.bio && (
                   <p
                     className={`text-sm mb-4 ${
@@ -323,19 +337,123 @@ export default function ProfilePage() {
                   </p>
                 )}
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="flex flex-wrap items-center gap-16 mb-4">
+                  <div className="flex items-center gap-1 text-sm">
+                    <span
+                      className={darkMode ? "text-gray-400" : "text-gray-600"}
+                    >
+                      📍
+                    </span>
+                    <span
+                      className={darkMode ? "text-gray-300" : "text-gray-700"}
+                    >
+                      Cairo, Egypt
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 text-sm">
+                    <span
+                      className={darkMode ? "text-gray-400" : "text-gray-600"}
+                    >
+                      🔗
+                    </span>
+                    <span
+                      className={darkMode ? "text-gray-300" : "text-gray-700"}
+                    >
+                      Website
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 text-sm">
+                    <Github
+                  className={`w-5 h-5 transition-colors ${
+                    darkMode
+                      ? "text-gray-400 group-hover:text-white"
+                      : "text-gray-600 group-hover:text-white"
+                  }`}
+                />
+                    <span
+                      className={darkMode ? "text-gray-300" : "text-gray-700"}
+                    >
+                      GitHub
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 text-sm">
+                    <Calendar
+                  className={`w-5 h-5 transition-colors ${
+                    darkMode
+                      ? "text-gray-400 group-hover:text-white"
+                      : "text-gray-600 group-hover:text-white"
+                  }`}
+                />
+                    <span
+                      className={darkMode ? "text-gray-400" : "text-gray-600"}
+                    >
+                      Joined January 2024
+                    </span>
+                  </div>
+                 
+                </div>
+
+                <div className="flex flex-wrap items-center gap-16 mb-4">
+                  <div className="flex items-center gap-1 text-sm">
+                     <Users2
+                  className={`w-5 h-5 transition-colors ${
+                    darkMode
+                      ? " text-blue-500 group-hover:text-white"
+                      : "text-blue-600 group-hover:text-white"
+                  }`}
+                />
+                    <span
+                      className={darkMode ? "text-gray-400" : "text-gray-600"}
+                    >
+                       friends
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 text-sm">
+                    <SearchCode
+                  className={`w-5 h-5 transition-colors ${
+                    darkMode
+                      ? "text-green-400 group-hover:text-white"
+                      : "text-green-600 group-hover:text-white"
+                  }`}
+                />
+                    <span
+                      className={darkMode ? "text-gray-400" : "text-gray-600"}
+                    >
+                       Languages
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-28 mb-4">
+                  <div className="flex items-center gap-1 text-sm">
+                    <span
+                      className={darkMode ? "text-gray-300" : "text-gray-700"}
+                    >
+                      415
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 text-sm">
+                    <span
+                      className={darkMode ? "text-gray-300" : "text-gray-700"}
+                    >
+                      Php, C#, C++, Python, Java
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-20">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5 text-green-500" />
                     <div>
                       <div
-                        className={`text-sm ${
+                        className={`text-xs ${
                           darkMode ? "text-gray-400" : "text-gray-600"
                         }`}
                       >
                         Solved
                       </div>
                       <div
-                        className={`font-semibold ${
+                        className={`font-bold ${
                           darkMode ? "text-white" : "text-gray-900"
                         }`}
                       >
@@ -348,14 +466,14 @@ export default function ProfilePage() {
                     <Trophy className="w-5 h-5 text-yellow-500" />
                     <div>
                       <div
-                        className={`text-sm ${
+                        className={`text-xs ${
                           darkMode ? "text-gray-400" : "text-gray-600"
                         }`}
                       >
                         Ranking
                       </div>
                       <div
-                        className={`font-semibold ${
+                        className={`font-bold ${
                           darkMode ? "text-white" : "text-gray-900"
                         }`}
                       >
@@ -368,14 +486,14 @@ export default function ProfilePage() {
                     <Target className="w-5 h-5 text-blue-500" />
                     <div>
                       <div
-                        className={`text-sm ${
+                        className={`text-xs ${
                           darkMode ? "text-gray-400" : "text-gray-600"
                         }`}
                       >
                         Easy
                       </div>
                       <div
-                        className={`font-semibold ${
+                        className={`font-bold ${
                           darkMode ? "text-white" : "text-gray-900"
                         }`}
                       >
@@ -388,14 +506,14 @@ export default function ProfilePage() {
                     <Target className="w-5 h-5 text-orange-500" />
                     <div>
                       <div
-                        className={`text-sm ${
+                        className={`text-xs ${
                           darkMode ? "text-gray-400" : "text-gray-600"
                         }`}
                       >
                         Medium
                       </div>
                       <div
-                        className={`font-semibold ${
+                        className={`font-bold ${
                           darkMode ? "text-white" : "text-gray-900"
                         }`}
                       >
@@ -403,45 +521,44 @@ export default function ProfilePage() {
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="mt-4 flex items-center gap-4">
                   <div className="flex items-center gap-2">
                     <Target className="w-5 h-5 text-red-500" />
                     <div>
-                      <span
-                        className={`text-sm ${
+                      <div
+                        className={`text-xs ${
                           darkMode ? "text-gray-400" : "text-gray-600"
                         }`}
                       >
-                        Hard:{" "}
-                      </span>
-                      <span
-                        className={`font-semibold ${
+                        Hard
+                      </div>
+                      <div
+                        className={`font-bold ${
                           darkMode ? "text-white" : "text-gray-900"
                         }`}
                       >
                         {stats.hard}
-                      </span>
+                      </div>
                     </div>
                   </div>
+
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5 text-green-500" />
                     <div>
-                      <span
-                        className={`text-sm ${
+                      <div
+                        className={`text-xs ${
                           darkMode ? "text-gray-400" : "text-gray-600"
                         }`}
                       >
-                        Acceptance:{" "}
-                      </span>
-                      <span
-                        className={`font-semibold ${
+                        Acceptance
+                      </div>
+                      <div
+                        className={`font-bold ${
                           darkMode ? "text-white" : "text-gray-900"
                         }`}
                       >
                         {stats.acceptanceRate}%
-                      </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -451,7 +568,7 @@ export default function ProfilePage() {
 
           {/* Streak Tracker Section */}
           <div
-            className={`rounded-lg p-6 transition-colors ${
+            className={`rounded-2xl p-6 transition-colors ${
               darkMode
                 ? "bg-gray-900 border border-gray-800"
                 : "bg-white border border-gray-200"
@@ -541,7 +658,7 @@ export default function ProfilePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Upcoming Deadlines Section */}
             <div
-              className={`rounded-lg p-6 transition-colors ${
+              className={`rounded-2xl p-6 transition-colors ${
                 darkMode
                   ? "bg-gray-900 border border-gray-800"
                   : "bg-white border border-gray-200"
@@ -629,7 +746,7 @@ export default function ProfilePage() {
 
             {/* Activity Calendar Section */}
             <div
-              className={`rounded-lg p-6 transition-colors ${
+              className={`rounded-2xl p-6 transition-colors ${
                 darkMode
                   ? "bg-gray-900 border border-gray-800"
                   : "bg-white border border-gray-200"
@@ -651,13 +768,14 @@ export default function ProfilePage() {
                   activityData={activityData}
                   darkMode={darkMode}
                 />
+                
               </div>
             </div>
           </div>
 
           {/* Progress Chart Section */}
           <div
-            className={`rounded-lg p-6 transition-colors ${
+            className={`rounded-2xl p-6 transition-colors ${
               darkMode
                 ? "bg-gray-900 border border-gray-800"
                 : "bg-white border border-gray-200"
@@ -813,13 +931,18 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
-      <footer className="bg-black text-white py-8 mt-16">
+      {/* Footer */}
+         <footer
+        className={` text-white py-8 mt-16 ${
+          darkMode ? "bg-black" : "bg-[E0E0E0]"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             {/* Logo */}
             <div className="flex items-center gap-2 mb-6 md:mb-0">
               <div className="text-3xl font-bold text-blue-600">∞</div>
-              <span className="text-xl font-semibold">Neura</span>
+              <span className="text-xl font-semibold text-blue-600">Neura</span>
             </div>
 
             {/* Social Links */}
@@ -830,15 +953,15 @@ export default function ProfilePage() {
                 rel="noopener noreferrer"
                 className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-colors group ${
                   darkMode
-                    ? "border-gray-600 hover:border-blue-500 hover:bg-blue-500"
-                    : "border-gray-400 hover:border-blue-600 hover:bg-blue-600"
+                    ? "border-[#0061EF] hover:border-blue-500 hover:bg-blue-500"
+                    : "border-[#0061EF] hover:border-blue-600 hover:bg-blue-600"
                 }`}
               >
                 <Facebook
                   className={`w-5 h-5 transition-colors ${
                     darkMode
-                      ? "text-gray-400 group-hover:text-white"
-                      : "text-gray-600 group-hover:text-white"
+                      ? "text-white-400 group-hover:text-white"
+                      : "text-black group-hover:text-white"
                   }`}
                 />
               </a>
@@ -849,15 +972,15 @@ export default function ProfilePage() {
                 rel="noopener noreferrer"
                 className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-colors group ${
                   darkMode
-                    ? "border-gray-600 hover:border-blue-500 hover:bg-blue-500"
-                    : "border-gray-400 hover:border-blue-600 hover:bg-blue-600"
+                    ? "border-[#0061EF] hover:border-blue-500 hover:bg-blue-500"
+                    : "border-[#0061EF] hover:border-blue-600 hover:bg-blue-600"
                 }`}
               >
                 <Linkedin
                   className={`w-5 h-5 transition-colors ${
                     darkMode
-                      ? "text-gray-400 group-hover:text-white"
-                      : "text-gray-600 group-hover:text-white"
+                      ? "text-white-400 group-hover:text-white"
+                      : "text-black group-hover:text-white"
                   }`}
                 />
               </a>
@@ -868,15 +991,15 @@ export default function ProfilePage() {
                 rel="noopener noreferrer"
                 className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-colors group ${
                   darkMode
-                    ? "border-gray-600 hover:border-gray-400 hover:bg-gray-700"
-                    : "border-gray-400 hover:border-gray-900 hover:bg-gray-900"
+                    ? "border-[#0061EF] hover:border-gray-400 hover:bg-gray-700"
+                    : "border-[#0061EF] hover:border-gray-900 hover:bg-gray-900"
                 }`}
               >
                 <Github
                   className={`w-5 h-5 transition-colors ${
                     darkMode
-                      ? "text-gray-400 group-hover:text-white"
-                      : "text-gray-600 group-hover:text-white"
+                      ? "text-white-400 group-hover:text-white"
+                      : "text-black group-hover:text-white"
                   }`}
                 />
               </a>
@@ -887,25 +1010,33 @@ export default function ProfilePage() {
               <span className="text-sm font-semibold">Fast Links</span>
               <a
                 href="#"
-                className="text-sm text-gray-400 hover:text-white transition-colors"
+                className={`text-sm hover:text-white transition-colors ${
+                  darkMode ? "text-gray-500" : "text-black"
+                }`}
               >
                 Home
               </a>
-              <a
+               <a
                 href="#"
-                className="text-sm text-gray-400 hover:text-white transition-colors"
+                className={`text-sm hover:text-white transition-colors ${
+                  darkMode ? "text-gray-500" : "text-black"
+                }`}
               >
                 Courses
               </a>
-              <a
+               <a
                 href="#"
-                className="text-sm text-gray-400 hover:text-white transition-colors"
+                className={`text-sm hover:text-white transition-colors ${
+                  darkMode ? "text-gray-500" : "text-black"
+                }`}
               >
                 Problems
               </a>
               <a
                 href="#"
-                className="text-sm text-gray-400 hover:text-white transition-colors"
+                className={`text-sm hover:text-white transition-colors ${
+                  darkMode ? "text-gray-500" : "text-black"
+                }`}
               >
                 Community
               </a>
@@ -914,7 +1045,9 @@ export default function ProfilePage() {
 
           {/* Copyright */}
           <div className="text-center mt-8 pt-8 border-t border-gray-800">
-            <p className="text-sm text-gray-400">
+            <p  className={`text-sm hover:text-white transition-colors ${
+                  darkMode ? "text-gray-400" : "text-black"
+                }`}>
               © 2025 Cubed Community. All rights reserved.
             </p>
           </div>
@@ -928,6 +1061,11 @@ export default function ProfilePage() {
 function formatTimeRemaining(date: Date): string {
   const now = new Date();
   const diff = date.getTime() - now.getTime();
+
+  if (diff <= 0) {
+    return "Time passed";
+  }
+
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
@@ -938,21 +1076,28 @@ function formatTimeRemaining(date: Date): string {
 }
 
 // Activity Calendar Component
-function ActivityCalendar({
-  activityData,
-  darkMode,
-}: {
+interface ActivityCalendarProps {
   activityData: ActivityData;
   darkMode: boolean;
-}) {
-  const weeks = 12;
-  const days = weeks * 7;
+}
+
+export function ActivityCalendar({
+  activityData,
+  darkMode,
+}: ActivityCalendarProps) {
   const today = new Date();
+  const startOfYear = new Date(today.getFullYear(), 0, 1);
+  const endOfYear = new Date(today.getFullYear(), 11, 31);
+  
+  // Calculate days from start of year to today
+  const daysDiff = Math.floor((endOfYear.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24));
+  
   const calendarData: { date: Date; count: number }[] = [];
 
-  for (let i = days - 1; i >= 0; i--) {
-    const date = new Date(today);
-    date.setDate(date.getDate() - i);
+  // Generate calendar data from start of year to today
+  for (let i = 0; i <= daysDiff; i++) {
+    const date = new Date(startOfYear);
+    date.setDate(date.getDate() + i);
     const dateStr = date.toISOString().split("T")[0];
     calendarData.push({
       date,
@@ -960,70 +1105,50 @@ function ActivityCalendar({
     });
   }
 
-  const getColor = (count: number) => {
-    if (count === 0) return darkMode ? "bg-gray-800" : "bg-gray-200";
-    if (count <= 2) return darkMode ? "bg-green-900" : "bg-green-200";
-    if (count <= 4) return darkMode ? "bg-green-700" : "bg-green-400";
-    if (count <= 6) return darkMode ? "bg-green-600" : "bg-green-500";
-    return darkMode ? "bg-green-500" : "bg-green-600";
+  const getColorIntensity = (count: number) => {
+    if (count === 0) return darkMode ? "bg-gray-800" : "bg-gray-100";
+    if (count <= 2) return "bg-green-200";
+    if (count <= 4) return "bg-green-400";
+    if (count <= 6) return "bg-green-600";
+    return "bg-green-800";
   };
 
-  const weekRows: { date: Date; count: number }[][] = [];
-  for (let i = 0; i < calendarData.length; i += 7) {
-    weekRows.push(calendarData.slice(i, i + 7));
-  }
+  // Group by weeks
+  const weeks: { date: Date; count: number }[][] = [];
+  let currentWeek: { date: Date; count: number }[] = [];
+
+  calendarData.forEach((day, index) => {
+    currentWeek.push(day);
+    if (day.date.getDay() === 6 || index === calendarData.length - 1) {
+      weeks.push([...currentWeek]);
+      currentWeek = [];
+    }
+  });
 
   return (
-    <>
-      <div className="inline-flex flex-col gap-1">
-        {weekRows.map((week, weekIndex) => (
-          <div key={weekIndex} className="flex gap-1">
+    <div className="space-y-4">
+      <div className="flex gap-1 flex-wrap">
+        {weeks.map((week, weekIndex) => (
+          <div key={weekIndex} className="flex flex-col gap-1">
             {week.map((day, dayIndex) => (
               <div
                 key={dayIndex}
-                className={`w-3 h-3 rounded-sm ${getColor(day.count)}`}
-                title={`${day.date.toDateString()}: ${day.count} submissions`}
+                className={`w-4 h-4 rounded-sm ${getColorIntensity(day.count)}`}
+                title={`${day.date.toLocaleDateString()}: ${day.count} submissions`}
               />
             ))}
           </div>
         ))}
       </div>
-
-      <div
-        className={`flex items-center gap-2 mt-4 text-sm ${
-          darkMode ? "text-gray-400" : "text-gray-600"
-        }`}
-      >
-        <span>Less</span>
-        <div className="flex gap-1">
-          <div
-            className={`w-3 h-3 rounded-sm ${
-              darkMode ? "bg-gray-800" : "bg-gray-200"
-            }`}
-          />
-          <div
-            className={`w-3 h-3 rounded-sm ${
-              darkMode ? "bg-green-900" : "bg-green-200"
-            }`}
-          />
-          <div
-            className={`w-3 h-3 rounded-sm ${
-              darkMode ? "bg-green-700" : "bg-green-400"
-            }`}
-          />
-          <div
-            className={`w-3 h-3 rounded-sm ${
-              darkMode ? "bg-green-600" : "bg-green-500"
-            }`}
-          />
-          <div
-            className={`w-3 h-3 rounded-sm ${
-              darkMode ? "bg-green-500" : "bg-green-600"
-            }`}
-          />
-        </div>
-        <span>More</span>
+      <div className="flex items-center gap-2 text-s">
+        <span className={darkMode ? "text-gray-400" : "text-gray-600"}>Less</span>
+        <div className={`w-3 h-3 rounded-sm ${darkMode ? "bg-gray-800" : "bg-gray-100"}`} />
+        <div className="w-3 h-3 rounded-sm bg-green-200" />
+        <div className="w-3 h-3 rounded-sm bg-green-400" />
+        <div className="w-3 h-3 rounded-sm bg-green-600" />
+        <div className="w-3 h-3 rounded-sm bg-green-800" />
+        <span className={darkMode ? "text-gray-400" : "text-gray-600"}>More</span>
       </div>
-    </>
+    </div>
   );
 }

@@ -149,7 +149,10 @@ const HomePage = () => {
 
         <h1 className="text-6xl font-bold mb-6 max-w-4xl">
           Up Your Skills To Be
-          <br />a good <span className="text-blue-500">Problem Solver</span>
+          <br />a good{" "}
+          <span className="bg-gradient-to-r from-[#4262E4] to-[#3995B9] bg-clip-text text-transparent">
+            Problem Solver
+          </span>
         </h1>
 
         <p
@@ -194,7 +197,9 @@ const HomePage = () => {
           </div>
           <h3 className="text-2xl font-bold text-blue-500 text-center">
             {"{"}
-            <span className="text-blue-400">Competition</span>
+            <span className="bg-gradient-to-r from-[#4B5BE9] to-[#3B8FC0] bg-clip-text text-transparent">
+              Competition
+            </span>
             {"}"}
           </h3>
         </div>
@@ -212,9 +217,9 @@ const HomePage = () => {
               isDarkMode ? "bg-gray-800" : "bg-gray-200"
             }`}
           >
-            <h3 className="text-3xl font-bold text-blue-400 text-center">
+            <span className="text-4xl font-bold text-blue-400 text-center bg-gradient-to-r from-[#4B5BE9] to-[#3B8FC0] bg-clip-text text-transparent">
               We push ourselves forward ;
-            </h3>
+            </span>
           </div>
 
           {/* Three Images in a Row */}
@@ -255,7 +260,9 @@ const HomePage = () => {
           </div>
           <h3 className="text-2xl font-bold text-blue-500 text-center">
             {"<"}
-            <span className="text-blue-400">One Team</span>
+            <span className="bg-gradient-to-r from-[#4B5BE9] to-[#3B8FC0] bg-clip-text text-transparent">
+              One Team
+            </span>
             {"/>"}
           </h3>
         </div>
@@ -283,7 +290,7 @@ const HomePage = () => {
 
       {/* Who We Are Section */}
       <section className={`px-8 py-20 ${isDarkMode ? "bg-black" : "bg-white"}`}>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto ">
           <div
             className={`rounded-3xl p-12 flex items-center justify-between ${
               isDarkMode ? "bg-blue-600" : "bg-blue-500"
@@ -383,7 +390,7 @@ const HomePage = () => {
 
       {/* Our Achievements Section */}
       <section className={`px-8 py-20 ${isDarkMode ? "bg-black" : "bg-white"}`}>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl  mx-auto">
           {/* Header */}
           <div
             className={`rounded-3xl p-12 mb-16 flex items-center justify-between ${
@@ -413,7 +420,7 @@ const HomePage = () => {
           <div className="relative">
             {/* Vertical Line */}
             <div
-              className={`absolute left-1/2 top-0 bottom-0 w-0.5 ${
+              className={`absolute left-1/2 top-0 bottom-0 w-1 ${
                 isDarkMode ? "bg-gray-800" : "bg-gray-300"
               } transform -translate-x-1/2`}
             ></div>
@@ -436,7 +443,7 @@ const HomePage = () => {
                   </div>
                 </div>
 
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-500 rounded-full border-4 border-black"></div>
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 bg-red-500 rounded-full border-4 border-red-500"></div>
 
                 <div className="w-1/2 pl-16">
                   <h3
@@ -479,7 +486,7 @@ const HomePage = () => {
                   </p>
                 </div>
 
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-500 rounded-full border-4 border-black"></div>
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 bg-yellow-500 rounded-full border-4 border-yellow-500"></div>
 
                 <div className="w-1/2 pl-16">
                   <div
@@ -512,7 +519,7 @@ const HomePage = () => {
                   </div>
                 </div>
 
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-black"></div>
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 bg-blue-500 rounded-full border-4 border-blue-500"></div>
 
                 <div className="w-1/2 pl-16">
                   <h3
@@ -553,7 +560,7 @@ const HomePage = () => {
                   </p>
                 </div>
 
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-black"></div>
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 bg-green-500 rounded-full border-4 border-green-500"></div>
 
                 <div className="w-1/2 pl-16">
                   <div
@@ -838,7 +845,7 @@ const HomePage = () => {
                 {/* Left Side - Image */}
                 <div className="flex-shrink-0">
                   <div className="mb-4">
-                    <span className="inline-block bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-bold">
+                    <span className="inline-block bg-[#FFB52B] text-gray-900 px-4 py-1 rounded-full text-sm font-bold">
                       LEVEL 1
                     </span>
                   </div>
@@ -862,9 +869,9 @@ const HomePage = () => {
                   {/* Topics Grid */}
                   <div className="grid grid-cols-2 gap-x-8 gap-y-3 mb-6">
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -878,9 +885,9 @@ const HomePage = () => {
                       <span className="text-gray-700">Topics Covered</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -894,9 +901,9 @@ const HomePage = () => {
                       <span className="text-gray-700">Algos I Merge</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -910,9 +917,9 @@ const HomePage = () => {
                       <span className="text-gray-700">Programming Fundmnt</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -926,9 +933,9 @@ const HomePage = () => {
                       <span className="text-gray-700">Data Structur Types</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -942,9 +949,9 @@ const HomePage = () => {
                       <span className="text-gray-700">Basic Mathematics</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -960,9 +967,9 @@ const HomePage = () => {
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -976,9 +983,9 @@ const HomePage = () => {
                       <span className="text-gray-700">Problem Solving</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -989,11 +996,12 @@ const HomePage = () => {
                           />
                         </svg>
                       </div>
+
                       <span className="text-gray-700">Basic Recursion</span>
                     </div>
                   </div>
 
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
+                  <button className="bg-[#2563EB] hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
                     Explore Foundation Courses
                   </button>
                 </div>
@@ -1010,7 +1018,7 @@ const HomePage = () => {
                 {/* Left Side - Image */}
                 <div className="flex-shrink-0">
                   <div className="mb-4">
-                    <span className="inline-block bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-bold">
+                    <span className="inline-block bg-[#FFB52B] text-gray-900 px-4 py-1 rounded-full text-sm font-bold">
                       LEVEL 2
                     </span>
                   </div>
@@ -1034,9 +1042,9 @@ const HomePage = () => {
                   {/* Topics Grid */}
                   <div className="grid grid-cols-2 gap-x-8 gap-y-3 mb-6">
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1050,9 +1058,9 @@ const HomePage = () => {
                       <span className="text-gray-700">Topics Covered</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1066,9 +1074,9 @@ const HomePage = () => {
                       <span className="text-gray-700">Linked Lists</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1082,9 +1090,9 @@ const HomePage = () => {
                       <span className="text-gray-700">Greedy Advance</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1100,9 +1108,9 @@ const HomePage = () => {
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1118,9 +1126,9 @@ const HomePage = () => {
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1136,9 +1144,9 @@ const HomePage = () => {
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1154,9 +1162,9 @@ const HomePage = () => {
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1173,7 +1181,7 @@ const HomePage = () => {
                     </div>
                   </div>
 
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
+                  <button className="bg-[#2563EB] hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
                     Explore Intermediate Courses
                   </button>
                 </div>
@@ -1190,7 +1198,7 @@ const HomePage = () => {
                 {/* Left Side - Image */}
                 <div className="flex-shrink-0">
                   <div className="mb-4">
-                    <span className="inline-block bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-bold">
+                    <span className="inline-block bg-[#FFB52B] text-gray-900 px-4 py-1 rounded-full text-sm font-bold">
                       LEVEL 3
                     </span>
                   </div>
@@ -1214,9 +1222,9 @@ const HomePage = () => {
                   {/* Topics Grid */}
                   <div className="grid grid-cols-2 gap-x-8 gap-y-3 mb-6">
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1230,9 +1238,9 @@ const HomePage = () => {
                       <span className="text-gray-700">Topics Covered</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1248,9 +1256,9 @@ const HomePage = () => {
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1266,9 +1274,9 @@ const HomePage = () => {
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1282,9 +1290,9 @@ const HomePage = () => {
                       <span className="text-gray-700">Game Theory I Work</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1300,9 +1308,9 @@ const HomePage = () => {
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1318,9 +1326,9 @@ const HomePage = () => {
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1336,9 +1344,9 @@ const HomePage = () => {
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6  rounded-full flex items-center justify-center flex-shrink-0">
                         <svg
-                          className="w-3 h-3 text-white"
+                          className="w-6 h-6 text-[#2F80ED]"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -1355,7 +1363,7 @@ const HomePage = () => {
                     </div>
                   </div>
 
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
+                  <button className="bg-[#2563EB] hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
                     Explore Advanced Courses
                   </button>
                 </div>
@@ -1399,7 +1407,7 @@ const HomePage = () => {
               <div
                 className={`rounded-2xl p-8 ${
                   isDarkMode ? "bg-white" : "bg-gray-100"
-                } border-l-4 border-blue-600`}
+                } border border-blue-600`}
               >
                 <div className="mb-6">
                   <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -1427,7 +1435,7 @@ const HomePage = () => {
               <div
                 className={`rounded-2xl p-8 ${
                   isDarkMode ? "bg-white" : "bg-gray-100"
-                } border-l-4 border-blue-600`}
+                } border border-blue-600`}
               >
                 <div className="mb-6">
                   <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -1455,7 +1463,7 @@ const HomePage = () => {
               <div
                 className={`rounded-2xl p-8 ${
                   isDarkMode ? "bg-white" : "bg-gray-100"
-                } border-l-4 border-blue-600`}
+                } border border-blue-600`}
               >
                 <div className="mb-6">
                   <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -1572,26 +1580,16 @@ const HomePage = () => {
 
       {/* Footer */}
       <footer
-        className={`px-8 py-16 ${isDarkMode ? "bg-black" : "bg-gray-50"}`}
+        className={` text-white py-8 mt-16 ${
+          isDarkMode ? "bg-black" : "bg-[E0E0E0]"
+        }`}
       >
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-12">
-            {/* Logo and Brand */}
-            <div className="flex items-center gap-3">
-              <div
-                className={`text-3xl font-bold ${
-                  isDarkMode ? "text-blue-500" : "text-blue-600"
-                }`}
-              >
-                ∞
-              </div>
-              <span
-                className={`text-xl font-semibold ${
-                  isDarkMode ? "text-white" : "text-gray-900"
-                }`}
-              >
-                Neura
-              </span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            {/* Logo */}
+            <div className="flex items-center gap-2 mb-6 md:mb-0">
+              <div className="text-3xl font-bold text-blue-600">∞</div>
+              <span className="text-xl font-semibold text-blue-600">Neura</span>
             </div>
 
             {/* Social Links */}
@@ -1602,15 +1600,15 @@ const HomePage = () => {
                 rel="noopener noreferrer"
                 className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-colors group ${
                   isDarkMode
-                    ? "border-gray-600 hover:border-blue-500 hover:bg-blue-500"
-                    : "border-gray-400 hover:border-blue-600 hover:bg-blue-600"
+                    ? "border-[#0061EF] hover:border-blue-500 hover:bg-blue-500"
+                    : "border-[#0061EF] hover:border-blue-600 hover:bg-blue-600"
                 }`}
               >
                 <Facebook
                   className={`w-5 h-5 transition-colors ${
                     isDarkMode
-                      ? "text-gray-400 group-hover:text-white"
-                      : "text-gray-600 group-hover:text-white"
+                      ? "text-white-400 group-hover:text-white"
+                      : "text-black group-hover:text-white"
                   }`}
                 />
               </a>
@@ -1621,15 +1619,15 @@ const HomePage = () => {
                 rel="noopener noreferrer"
                 className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-colors group ${
                   isDarkMode
-                    ? "border-gray-600 hover:border-blue-500 hover:bg-blue-500"
-                    : "border-gray-400 hover:border-blue-600 hover:bg-blue-600"
+                    ? "border-[#0061EF] hover:border-blue-500 hover:bg-blue-500"
+                    : "border-[#0061EF] hover:border-blue-600 hover:bg-blue-600"
                 }`}
               >
                 <Linkedin
                   className={`w-5 h-5 transition-colors ${
                     isDarkMode
-                      ? "text-gray-400 group-hover:text-white"
-                      : "text-gray-600 group-hover:text-white"
+                      ? "text-white-400 group-hover:text-white"
+                      : "text-black group-hover:text-white"
                   }`}
                 />
               </a>
@@ -1640,66 +1638,52 @@ const HomePage = () => {
                 rel="noopener noreferrer"
                 className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-colors group ${
                   isDarkMode
-                    ? "border-gray-600 hover:border-gray-400 hover:bg-gray-700"
-                    : "border-gray-400 hover:border-gray-900 hover:bg-gray-900"
+                    ? "border-[#0061EF] hover:border-gray-400 hover:bg-gray-700"
+                    : "border-[#0061EF] hover:border-gray-900 hover:bg-gray-900"
                 }`}
               >
                 <Github
                   className={`w-5 h-5 transition-colors ${
                     isDarkMode
-                      ? "text-gray-400 group-hover:text-white"
-                      : "text-gray-600 group-hover:text-white"
+                      ? "text-white-400 group-hover:text-white"
+                      : "text-black group-hover:text-white"
                   }`}
                 />
               </a>
             </div>
 
-            {/* Fast Links */}
+            {/* Quick Links */}
             <div className="flex items-center gap-6">
-              <span
-                className={`font-semibold ${
-                  isDarkMode ? "text-gray-400" : "text-gray-600"
-                }`}
-              >
-                Fast Links
-              </span>
+              <span className="text-sm font-semibold">Fast Links</span>
               <a
-                href="#home"
-                className={`${
-                  isDarkMode
-                    ? "text-gray-300 hover:text-white"
-                    : "text-gray-600 hover:text-gray-900"
-                } transition-colors`}
+                href="#"
+                className={`text-sm hover:text-white transition-colors ${
+                  isDarkMode ? "text-gray-500" : "text-black"
+                }`}
               >
                 Home
               </a>
-              <a
-                href="#courses"
-                className={`${
-                  isDarkMode
-                    ? "text-gray-300 hover:text-white"
-                    : "text-gray-600 hover:text-gray-900"
-                } transition-colors`}
+               <a
+                href="#"
+                className={`text-sm hover:text-white transition-colors ${
+                  isDarkMode ? "text-gray-500" : "text-black"
+                }`}
               >
                 Courses
               </a>
-              <a
-                href="#problems"
-                className={`${
-                  isDarkMode
-                    ? "text-gray-300 hover:text-white"
-                    : "text-gray-600 hover:text-gray-900"
-                } transition-colors`}
+               <a
+                href="#"
+                className={`text-sm hover:text-white transition-colors ${
+                  isDarkMode ? "text-gray-500" : "text-black"
+                }`}
               >
                 Problems
               </a>
               <a
-                href="#community"
-                className={`${
-                  isDarkMode
-                    ? "text-gray-300 hover:text-white"
-                    : "text-gray-600 hover:text-gray-900"
-                } transition-colors`}
+                href="#"
+                className={`text-sm hover:text-white transition-colors ${
+                  isDarkMode ? "text-gray-500" : "text-black"
+                }`}
               >
                 Community
               </a>
@@ -1707,8 +1691,10 @@ const HomePage = () => {
           </div>
 
           {/* Copyright */}
-          <div className="text-center pt-8 border-t border-gray-800">
-            <p className={`${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+          <div className="text-center mt-8 pt-8 border-t border-gray-800">
+            <p  className={`text-sm hover:text-white transition-colors ${
+                  isDarkMode ? "text-gray-400" : "text-black"
+                }`}>
               © 2025 Cubed Community. All rights reserved.
             </p>
           </div>

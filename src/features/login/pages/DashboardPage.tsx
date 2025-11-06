@@ -11,7 +11,8 @@ import {
   LogOut,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { Facebook, Linkedin, Github } from 'lucide-react';
+import { Facebook, Linkedin, Github } from "lucide-react";
+import announcement from "../../../assets/images/announcement.png";
 // Fake data for announcements
 const announcements = [
   {
@@ -40,8 +41,7 @@ const announcements = [
       "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.",
     likes: 12,
     comments: 2,
-    image:
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop",
+    image: announcement,
   },
 ];
 
@@ -94,7 +94,6 @@ export const DashboardPage = () => {
   const navBgClass = darkMode ? "bg-gray-900" : "bg-white";
   const inputBgClass = darkMode ? "bg-gray-700" : "bg-gray-100";
 
- 
   const handleLogout = () => {
     localStorage.removeItem("auth_token");
     navigate("/home", { replace: true });
@@ -105,13 +104,13 @@ export const DashboardPage = () => {
   const getRankBadgeColor = (rank: number) => {
     switch (rank) {
       case 1:
-        return "bg-gradient-to-r from-yellow-400 to-orange-500";
+        return  darkMode ? "bg-[#E79A0C]" : "bg-[#FFB52B]";
       case 2:
-        return "bg-gradient-to-r from-blue-400 to-blue-600";
+        return darkMode ? "bg-[#E79A0C]" : "bg-[#FFB52B]";
       case 3:
-        return "bg-gradient-to-r from-purple-400 to-purple-600";
+        return darkMode ? "bg-[#E79A0C]" : "bg-[#FFB52B]";
       default:
-        return "bg-gradient-to-r from-gray-400 to-gray-500";
+        return darkMode ? "bg-[#E79A0C]" : "bg-[#FFB52B]";
     }
   };
 
@@ -183,7 +182,7 @@ export const DashboardPage = () => {
 
               <div
                 onClick={() => navigate("/profile")}
-                className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 overflow-hidden cursor-pointer hover:scale-105 transition-transform"
+                className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 overflow-hidden cursor-pointer hover:scale-105 transition-transform border-2 border-[#0061EF] "
               >
                 <img
                   src="https://api.dicebear.com/7.x/avataaars/svg?seed=currentuser"
@@ -212,11 +211,11 @@ export const DashboardPage = () => {
               >
                 {/* Post Header */}
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 overflow-hidden flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 overflow-hidden flex-shrink-0 border-2 border-[#0061EF]">
                     <img
                       src={announcement.user.avatar}
                       alt={announcement.user.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover "
                     />
                   </div>
                   <div className="flex-1">
@@ -243,14 +242,14 @@ export const DashboardPage = () => {
                     <img
                       src={announcement.image}
                       alt="Announcement"
-                      className="w-full h-auto"
+                      className="w-70 h-70"
                     />
                   </div>
                 )}
 
                 {/* Post Stats */}
                 <div
-                  className={`flex items-center justify-between pt-4 border-t ${
+                  className={`flex items-center justify-between pt-4  ${
                     darkMode ? "border-gray-700" : "border-gray-200"
                   }`}
                 >
@@ -268,10 +267,10 @@ export const DashboardPage = () => {
                     darkMode ? "border-gray-700" : "border-gray-200"
                   }`}
                 >
-                  <button className="flex items-center gap-2 text-gray-500 hover:text-blue-600 transition-colors">
+                  <button className="flex items-center gap-2 text-blue-500 hover:text-blue-600 transition-colors">
                     <Heart size={20} />
                   </button>
-                  <button className="flex items-center gap-2 text-gray-500 hover:text-blue-600 transition-colors ml-auto">
+                  <button className="flex items-center gap-2 text-blue-500 hover:text-blue-600 transition-colors ml-auto">
                     <MessageCircle size={20} />
                   </button>
                 </div>
@@ -287,7 +286,7 @@ export const DashboardPage = () => {
             >
               <div className="relative">
                 <Search
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500 "
                   size={20}
                 />
                 <input
@@ -319,15 +318,15 @@ export const DashboardPage = () => {
                     key={user.id}
                     className={`flex items-center gap-4 p-4 rounded-xl ${
                       user.rank === 1
-                        ? "bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20"
+                        ? darkMode ? "bg-[#364255]" : "bg-[#BFD9FF]"
                         : user.rank === 2
-                        ? "bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20"
-                        : "bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20"
+                        ? darkMode ? "bg-[#364255]" : "bg-[#BFD9FF]"
+                        : darkMode ? "bg-[#364255]" : "bg-[#BFD9FF]"
                     } transition-all hover:scale-105 cursor-pointer`}
                   >
                     {/* Rank Badge */}
                     <div className="relative">
-                      <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-lg">
+                      <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#0061EF] shadow-lg">
                         <img
                           src={user.avatar}
                           alt={user.name}
@@ -368,13 +367,17 @@ export const DashboardPage = () => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-8 mt-16">
+       <footer
+        className={` text-white py-8 mt-16 ${
+          darkMode ? "bg-black" : "bg-[E0E0E0]"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             {/* Logo */}
             <div className="flex items-center gap-2 mb-6 md:mb-0">
               <div className="text-3xl font-bold text-blue-600">∞</div>
-              <span className="text-xl font-semibold">Neura</span>
+              <span className="text-xl font-semibold text-blue-600">Neura</span>
             </div>
 
             {/* Social Links */}
@@ -385,15 +388,15 @@ export const DashboardPage = () => {
                 rel="noopener noreferrer"
                 className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-colors group ${
                   darkMode
-                    ? "border-gray-600 hover:border-blue-500 hover:bg-blue-500"
-                    : "border-gray-400 hover:border-blue-600 hover:bg-blue-600"
+                    ? "border-[#0061EF] hover:border-blue-500 hover:bg-blue-500"
+                    : "border-[#0061EF] hover:border-blue-600 hover:bg-blue-600"
                 }`}
               >
                 <Facebook
                   className={`w-5 h-5 transition-colors ${
                     darkMode
-                      ? "text-gray-400 group-hover:text-white"
-                      : "text-gray-600 group-hover:text-white"
+                      ? "text-white-400 group-hover:text-white"
+                      : "text-black group-hover:text-white"
                   }`}
                 />
               </a>
@@ -404,15 +407,15 @@ export const DashboardPage = () => {
                 rel="noopener noreferrer"
                 className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-colors group ${
                   darkMode
-                    ? "border-gray-600 hover:border-blue-500 hover:bg-blue-500"
-                    : "border-gray-400 hover:border-blue-600 hover:bg-blue-600"
+                    ? "border-[#0061EF] hover:border-blue-500 hover:bg-blue-500"
+                    : "border-[#0061EF] hover:border-blue-600 hover:bg-blue-600"
                 }`}
               >
                 <Linkedin
                   className={`w-5 h-5 transition-colors ${
                     darkMode
-                      ? "text-gray-400 group-hover:text-white"
-                      : "text-gray-600 group-hover:text-white"
+                      ? "text-white-400 group-hover:text-white"
+                      : "text-black group-hover:text-white"
                   }`}
                 />
               </a>
@@ -423,45 +426,52 @@ export const DashboardPage = () => {
                 rel="noopener noreferrer"
                 className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-colors group ${
                   darkMode
-                    ? "border-gray-600 hover:border-gray-400 hover:bg-gray-700"
-                    : "border-gray-400 hover:border-gray-900 hover:bg-gray-900"
+                    ? "border-[#0061EF] hover:border-gray-400 hover:bg-gray-700"
+                    : "border-[#0061EF] hover:border-gray-900 hover:bg-gray-900"
                 }`}
               >
                 <Github
                   className={`w-5 h-5 transition-colors ${
                     darkMode
-                      ? "text-gray-400 group-hover:text-white"
-                      : "text-gray-600 group-hover:text-white"
+                      ? "text-white-400 group-hover:text-white"
+                      : "text-black group-hover:text-white"
                   }`}
                 />
               </a>
             </div>
-
 
             {/* Quick Links */}
             <div className="flex items-center gap-6">
               <span className="text-sm font-semibold">Fast Links</span>
               <a
                 href="#"
-                className="text-sm text-gray-400 hover:text-white transition-colors"
+                className={`text-sm hover:text-white transition-colors ${
+                  darkMode ? "text-gray-500" : "text-black"
+                }`}
               >
                 Home
               </a>
-              <a
+               <a
                 href="#"
-                className="text-sm text-gray-400 hover:text-white transition-colors"
+                className={`text-sm hover:text-white transition-colors ${
+                  darkMode ? "text-gray-500" : "text-black"
+                }`}
               >
                 Courses
               </a>
-              <a
+               <a
                 href="#"
-                className="text-sm text-gray-400 hover:text-white transition-colors"
+                className={`text-sm hover:text-white transition-colors ${
+                  darkMode ? "text-gray-500" : "text-black"
+                }`}
               >
                 Problems
               </a>
               <a
                 href="#"
-                className="text-sm text-gray-400 hover:text-white transition-colors"
+                className={`text-sm hover:text-white transition-colors ${
+                  darkMode ? "text-gray-500" : "text-black"
+                }`}
               >
                 Community
               </a>
@@ -470,7 +480,9 @@ export const DashboardPage = () => {
 
           {/* Copyright */}
           <div className="text-center mt-8 pt-8 border-t border-gray-800">
-            <p className="text-sm text-gray-400">
+            <p  className={`text-sm hover:text-white transition-colors ${
+                  darkMode ? "text-gray-400" : "text-black"
+                }`}>
               © 2025 Cubed Community. All rights reserved.
             </p>
           </div>
