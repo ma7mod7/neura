@@ -21,7 +21,7 @@ import courseLevel from "../../../assets/images/courseLevel.png";
 import study from "../../../assets/images/study.png";
 import { Facebook, Linkedin, Github } from "lucide-react";
 const HomePage = () => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -32,7 +32,9 @@ const HomePage = () => {
   return (
     <div
       className={`min-h-screen transition-colors duration-300 ${
-        isDarkMode ? "bg-black text-white" : "bg-white text-gray-900"
+        isDarkMode
+          ? "bg-black text-white"
+          : "bg-gradient-to-r from-[#D9E8FF] via-[#FFF1E8] to-[#B9C5D6] text-gray-900"
       }`}
     >
       {/* Navigation */}
@@ -40,30 +42,32 @@ const HomePage = () => {
         {/* Logo */}
         <div className="flex items-center">
           <div
-            className={`text-3xl font-bold ${
-              isDarkMode ? "text-blue-500" : "text-blue-600"
-            }`}
+            className={`text-6xl font-bold bg-gradient-to-r from-[#0064E1] to-[#0082FB] bg-clip-text text-transparent`}
           >
             ∞
           </div>
-          <span className="text-2xl font-bold text-blue-600">Neura</span>
+          <span
+            className={`text-3xl font-bold bg-gradient-to-r from-[#0064E1] to-[#0082FB] bg-clip-text text-transparent ml-2`}
+          >
+            Neura
+          </span>
         </div>
 
         {/* Nav Links */}
         <div
           className={`flex items-center gap-8 px-8 py-3 rounded-full ${
-            isDarkMode ? "bg-gray-900" : "bg-gray-100"
+            isDarkMode ? "bg-[#BFD9FF]" : "bg-[#BFD9FF]"
           }`}
         >
-          <a href="#home" className="text-blue-500 font-medium">
+          <a href="#home" className="text-[#0061EF] font-medium">
             Home
           </a>
           <a
             href="#about"
             className={`${
               isDarkMode
-                ? "text-gray-300 hover:text-white"
-                : "text-gray-600 hover:text-gray-900"
+                ? "text-black hover:text-white"
+                : "text-black hover:text-gray-900"
             } transition-colors`}
           >
             About Us
@@ -72,8 +76,8 @@ const HomePage = () => {
             href="#achievements"
             className={`${
               isDarkMode
-                ? "text-gray-300 hover:text-white"
-                : "text-gray-600 hover:text-gray-900"
+                ? "text-black hover:text-white"
+                : "text-black hover:text-gray-900"
             } transition-colors`}
           >
             Achievements
@@ -82,8 +86,8 @@ const HomePage = () => {
             href="#services"
             className={`${
               isDarkMode
-                ? "text-gray-300 hover:text-white"
-                : "text-gray-600 hover:text-gray-900"
+                ? "text-black hover:text-white"
+                : "text-black hover:text-gray-900"
             } transition-colors`}
           >
             Services
@@ -92,8 +96,8 @@ const HomePage = () => {
             href="#courses"
             className={`${
               isDarkMode
-                ? "text-gray-300 hover:text-white"
-                : "text-gray-600 hover:text-gray-900"
+                ? "text-black hover:text-white"
+                : "text-black hover:text-gray-900"
             } transition-colors`}
           >
             Courses
@@ -121,7 +125,7 @@ const HomePage = () => {
 
           <button
             onClick={() => navigate("/login")}
-            className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors"
+            className="bg-[#0061EF] text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors"
           >
             Sign In
           </button>
@@ -166,10 +170,10 @@ const HomePage = () => {
         </p>
 
         <button
-          className={`px-8 py-3 rounded-full border-2 font-medium transition-all ${
+          className={`px-14 py-2 rounded-full border-2 font-medium transition-all ${
             isDarkMode
-              ? "border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white"
-              : "border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+              ? "border-[#0061EF] text-white hover:bg-blue-500 hover:text-white"
+              : "border-[#0061EF] text-black hover:bg-blue-600 hover:text-white"
           }`}
         >
           See More
@@ -181,7 +185,7 @@ const HomePage = () => {
         {/* Left Card */}
         <div
           className={`w-[260px] rounded-2xl p-6 ${
-            isDarkMode ? "bg-gray-900" : "bg-gray-100"
+            isDarkMode ? "bg-[#D7E1EF]" : "bg-[#D7E1EF]"
           } overflow-hidden flex flex-col items-center`}
         >
           <div
@@ -207,17 +211,17 @@ const HomePage = () => {
         {/* Center Card */}
         <div
           className={`flex-1 rounded-3xl p-6 ${
-            isDarkMode ? "bg-gray-900" : "bg-gray-100"
+            isDarkMode ? "bg-[#D7E1EF]" : "bg-[#D7E1EF]"
           }`}
           style={{ maxWidth: "640px" }}
         >
           {/* Title */}
           <div
             className={`rounded-xl py-6 mb-6 flex justify-center items-center ${
-              isDarkMode ? "bg-gray-800" : "bg-gray-200"
+              isDarkMode ? "bg-[#D7E1EF]" : "bg-[#D7E1EF]"
             }`}
           >
-            <span className="text-4xl font-bold text-blue-400 text-center bg-gradient-to-r from-[#4B5BE9] to-[#3B8FC0] bg-clip-text text-transparent">
+            <span className="text-4xl font-bold  text-center bg-gradient-to-r from-[#4B5BE9] to-[#3B8FC0] bg-clip-text text-transparent">
               We push ourselves forward ;
             </span>
           </div>
@@ -244,7 +248,7 @@ const HomePage = () => {
         {/* Right Card */}
         <div
           className={`w-[260px] rounded-2xl p-6 ${
-            isDarkMode ? "bg-gray-900" : "bg-gray-100"
+            isDarkMode ? "bg-[#D7E1EF]" : "bg-[#D7E1EF]"
           } overflow-hidden flex flex-col items-center`}
         >
           <div
@@ -269,7 +273,7 @@ const HomePage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-gradient-to-r from-yellow-500 to-orange-500 px-8 py-16">
+      <section className="bg-[#FFB52B] px-8 py-16">
         <div className="max-w-7xl mx-auto grid grid-cols-3 gap-8 text-center">
           <div>
             <div className="text-6xl font-bold text-white mb-2">+1000</div>
@@ -292,7 +296,7 @@ const HomePage = () => {
       <section className={`px-8 py-20 ${isDarkMode ? "bg-black" : "bg-white"}`}>
         <div className="max-w-7xl mx-auto ">
           <div
-            className={`rounded-3xl p-12 flex items-center justify-between ${
+            className={`rounded-3xl p-14 flex items-center justify-between ${
               isDarkMode ? "bg-blue-600" : "bg-blue-500"
             }`}
           >
@@ -343,7 +347,7 @@ const HomePage = () => {
       <section className={`px-8 py-20 ${isDarkMode ? "bg-black" : "bg-white"}`}>
         <div className="max-w-7xl mx-auto">
           <div
-            className={`rounded-3xl p-12 flex items-center justify-between ${
+            className={`rounded-3xl p-14 flex items-center justify-between ${
               isDarkMode ? "bg-blue-600" : "bg-blue-500"
             }`}
           >
@@ -393,7 +397,7 @@ const HomePage = () => {
         <div className="max-w-7xl  mx-auto">
           {/* Header */}
           <div
-            className={`rounded-3xl p-12 mb-16 flex items-center justify-between ${
+            className={`rounded-3xl p-28 mb-16 flex items-center justify-between ${
               isDarkMode ? "bg-blue-600" : "bg-blue-500"
             }`}
           >
@@ -420,64 +424,94 @@ const HomePage = () => {
           <div className="relative">
             {/* Vertical Line */}
             <div
-              className={`absolute left-1/2 top-0 bottom-0 w-1 ${
-                isDarkMode ? "bg-gray-800" : "bg-gray-300"
+              className={`absolute left-1/2 top-0 bottom-0 w-0.5 ${
+                isDarkMode ? "bg-gray-700" : "bg-gray-400"
               } transform -translate-x-1/2`}
             ></div>
 
             {/* Achievement Items */}
-            <div className="space-y-24">
+            <div className="space-y-16">
               {/* ECPC 2025 - Left */}
               <div className="relative flex items-center">
-                <div className="w-1/2 pr-16 text-right">
-                  <div
-                    className={`inline-block rounded-2xl overflow-hidden ${
-                      isDarkMode ? "bg-gray-900" : "bg-gray-100"
-                    } p-3`}
-                  >
-                    <div className="w-64 h-40 flex items-center justify-center bg-gray-800 rounded-xl">
-                      <div className="text-5xl">
-                        <img src={mahmoud} alt="ECPC 2025" />
-                      </div>
+                {/* Left side - Image */}
+                <div className="w-1/2 pr-8 flex justify-end">
+                  <div className="relative">
+                    <div
+                      className={`rounded-3xl overflow-hidden shadow-xl ${
+                        isDarkMode ? "bg-gray-800" : "bg-white"
+                      } p-2 border-4 border-red-500`}
+                    >
+                      <img
+                        src={mahmoud}
+                        alt="ECPC 2025"
+                        className="w-72 h-48 object-cover rounded-2xl"
+                      />
                     </div>
+                    {/* Connecting line from image to dot */}
+                    <div className="absolute top-1/2 -right-8 w-8 h-0.5 bg-red-500"></div>
                   </div>
                 </div>
 
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 bg-red-500 rounded-full border-4 border-red-500"></div>
+                {/* Center dot */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-red-500 rounded-full border-4 border-red-500 z-10"></div>
 
+                {/* Right side - Content */}
                 <div className="w-1/2 pl-16">
                   <h3
                     className={`text-2xl font-bold mb-2 ${
-                      isDarkMode ? "text-white" : "text-gray-900"
+                      isDarkMode ? "text-white" : "text-[#182B62]"
                     }`}
                   >
-                    ECPC 2025 Qualifiers
+                    ECPC
+                    <span
+                      className={`bg-clip-text text-transparent ${
+                        isDarkMode
+                          ? "bg-gradient-to-r from-[#FED303] to-[#FFD740]"
+                          : "bg-gradient-to-r from-[#0B2880] to-[#1D4ED8]"
+                      }`}
+                    >
+                      {" "}
+                      2025{" "}
+                    </span>
+                    Qualifiers
                   </h3>
                   <p
                     className={`${
-                      isDarkMode ? "text-gray-400" : "text-gray-600"
+                      isDarkMode ? "text-gray-400" : "text-[#182B62]"
                     }`}
                   >
-                    3 Giza/Sadat Vii Temp Team
+                    3 Ktakeet W Tmra Team
                     <br />
-                    Ranked : 2 St.
+                    Ranked : 21 St.
                   </p>
                 </div>
               </div>
 
               {/* ECPC 2025 - Right */}
               <div className="relative flex items-center">
+                {/* Left side - Content */}
                 <div className="w-1/2 pr-16 text-right">
                   <h3
                     className={`text-2xl font-bold mb-2 ${
-                      isDarkMode ? "text-white" : "text-gray-900"
+                      isDarkMode ? "text-white" : "text-[#182B62]"
                     }`}
                   >
-                    ECPC 2025 Qualifiers
+                    ECPC
+                    <span
+                      className={`bg-clip-text text-transparent ${
+                        isDarkMode
+                          ? "bg-gradient-to-r from-[#FED303] to-[#FFD740]"
+                          : "bg-gradient-to-r from-[#0B2880] to-[#1D4ED8]"
+                      }`}
+                    >
+                      {" "}
+                      2025{" "}
+                    </span>
+                    Qualifiers
                   </h3>
                   <p
                     className={`${
-                      isDarkMode ? "text-gray-400" : "text-gray-600"
+                      isDarkMode ? "text-gray-400" : "text-[#182B62]"
                     }`}
                   >
                     Taalaam 4n4ly Team
@@ -486,18 +520,24 @@ const HomePage = () => {
                   </p>
                 </div>
 
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 bg-yellow-500 rounded-full border-4 border-yellow-500"></div>
+                {/* Center dot */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-yellow-500 z-10"></div>
 
-                <div className="w-1/2 pl-16">
-                  <div
-                    className={`inline-block rounded-2xl overflow-hidden ${
-                      isDarkMode ? "bg-gray-900" : "bg-gray-100"
-                    } p-3`}
-                  >
-                    <div className="w-64 h-40 flex items-center justify-center bg-gray-800 rounded-xl">
-                      <div className="text-5xl">
-                        <img src={girls} alt="ECPC 2025" />
-                      </div>
+                {/* Right side - Image */}
+                <div className=" pl-8">
+                  <div className="relative">
+                    {/* Connecting line from dot to image */}
+                    <div className="absolute top-1/2 -left-8 w-8 h-0.5 bg-yellow-500"></div>
+                    <div
+                      className={`rounded-3xl overflow-hidden shadow-xl ${
+                        isDarkMode ? "bg-gray-800" : "bg-white"
+                      } p-2 border-4 border-yellow-500`}
+                    >
+                      <img
+                        src={girls}
+                        alt="ECPC 2025"
+                        className="w-72 h-48 object-cover rounded-2xl"
+                      />
                     </div>
                   </div>
                 </div>
@@ -505,33 +545,51 @@ const HomePage = () => {
 
               {/* ECPC 2024 - Left */}
               <div className="relative flex items-center">
-                <div className="w-1/2 pr-16 text-right">
-                  <div
-                    className={`inline-block rounded-2xl overflow-hidden ${
-                      isDarkMode ? "bg-gray-900" : "bg-gray-100"
-                    } p-3`}
-                  >
-                    <div className="w-64 h-40 flex items-center justify-center bg-gray-800 rounded-xl">
-                      <div className="text-5xl">
-                        <img src={assem} alt="ECPC 2025" />
-                      </div>
+                {/* Left side - Image */}
+                <div className="w-1/2 pr-8 flex justify-end">
+                  <div className="relative">
+                    <div
+                      className={`rounded-3xl overflow-hidden shadow-xl ${
+                        isDarkMode ? "bg-gray-800" : "bg-white"
+                      } p-2 border-4 border-blue-500`}
+                    >
+                      <img
+                        src={assem}
+                        alt="ECPC 2024"
+                        className="w-72 h-48 object-cover rounded-2xl"
+                      />
                     </div>
+                    {/* Connecting line from image to dot */}
+                    <div className="absolute top-1/2 -right-8 w-8 h-0.5 bg-blue-500"></div>
                   </div>
                 </div>
 
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 bg-blue-500 rounded-full border-4 border-blue-500"></div>
+                {/* Center dot */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-blue-500 rounded-full border-4 border-blue-500 z-10"></div>
 
+                {/* Right side - Content */}
                 <div className="w-1/2 pl-16">
                   <h3
                     className={`text-2xl font-bold mb-2 ${
-                      isDarkMode ? "text-white" : "text-gray-900"
+                      isDarkMode ? "text-white" : "text-[#182B62]"
                     }`}
                   >
-                    ECPC 2024 Qualifiers
+                    ECPC
+                    <span
+                      className={`bg-clip-text text-transparent ${
+                        isDarkMode
+                          ? "bg-gradient-to-r from-[#FED303] to-[#FFD740]"
+                          : "bg-gradient-to-r from-[#0B2880] to-[#1D4ED8]"
+                      }`}
+                    >
+                      {" "}
+                      2024{" "}
+                    </span>
+                    Qualifiers
                   </h3>
                   <p
                     className={`${
-                      isDarkMode ? "text-gray-400" : "text-gray-600"
+                      isDarkMode ? "text-gray-400" : "text-[#182B62]"
                     }`}
                   >
                     El Tawba El Soubatry Team
@@ -543,35 +601,53 @@ const HomePage = () => {
 
               {/* ACPC 2023 - Right */}
               <div className="relative flex items-center">
+                {/* Left side - Content */}
                 <div className="w-1/2 pr-16 text-right">
                   <h3
                     className={`text-2xl font-bold mb-2 ${
-                      isDarkMode ? "text-white" : "text-gray-900"
+                      isDarkMode ? "text-white" : "text-[#182B62]"
                     }`}
                   >
-                    ACPC 2023 Qualifiers
+                    ECPC
+                    <span
+                      className={`bg-clip-text text-transparent ${
+                        isDarkMode
+                          ? "bg-gradient-to-r from-[#FED303] to-[#FFD740]"
+                          : "bg-gradient-to-r from-[#0B2880] to-[#1D4ED8]"
+                      }`}
+                    >
+                      {" "}
+                      2023{" "}
+                    </span>
+                    Qualifiers
                   </h3>
                   <p
                     className={`${
-                      isDarkMode ? "text-gray-400" : "text-gray-600"
+                      isDarkMode ? "text-gray-400" : "text-[#182B62]"
                     }`}
                   >
                     Big Data NN Team
                   </p>
                 </div>
 
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 bg-green-500 rounded-full border-4 border-green-500"></div>
+                {/* Center dot */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-green-500 rounded-full border-4 border-green-500 z-10"></div>
 
-                <div className="w-1/2 pl-16">
-                  <div
-                    className={`inline-block rounded-2xl overflow-hidden ${
-                      isDarkMode ? "bg-gray-900" : "bg-gray-100"
-                    } p-3`}
-                  >
-                    <div className="w-64 h-40 flex items-center justify-center bg-gray-800 rounded-xl">
-                      <div className="text-5xl">
-                        <img src={sherif} alt="ECPC 2025" />
-                      </div>
+                {/* Right side - Image */}
+                <div className=" pl-8">
+                  <div className="relative">
+                    {/* Connecting line from dot to image */}
+                    <div className="absolute top-1/2 -left-8 w-8 h-0.5 bg-green-500"></div>
+                    <div
+                      className={`rounded-3xl overflow-hidden shadow-xl ${
+                        isDarkMode ? "bg-gray-800" : "bg-white"
+                      } p-2 border-4 border-green-500`}
+                    >
+                      <img
+                        src={sherif}
+                        alt="ECPC 2023"
+                        className="w-72 h-48 object-cover rounded-2xl"
+                      />
                     </div>
                   </div>
                 </div>
@@ -586,7 +662,7 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div
-            className={`rounded-3xl p-12 mb-16 flex items-center justify-between ${
+            className={`rounded-3xl p-14 mb-16 flex items-center justify-between ${
               isDarkMode ? "bg-blue-600" : "bg-blue-500"
             }`}
           >
@@ -600,7 +676,7 @@ const HomePage = () => {
               </p>
             </div>
             <div className="flex-shrink-0 ml-16">
-              <div className="w-64 h-32 flex items-center justify-center">
+              <div className="w-64 h-52 flex items-center justify-center">
                 <div className="text-7xl opacity-100">
                   <img src={services} alt="" />
                 </div>
@@ -614,11 +690,11 @@ const HomePage = () => {
             <div
               className={`rounded-2xl p-8 ${
                 isDarkMode
-                  ? "bg-white text-gray-900"
-                  : "bg-gray-100 text-gray-900"
+                  ? "bg-[#E3E8EF] text-gray-900"
+                  : "bg-[#E3E8EF] text-gray-900"
               }`}
             >
-              <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
                 <svg
                   className="w-6 h-6 text-white"
                   fill="none"
@@ -645,11 +721,11 @@ const HomePage = () => {
             <div
               className={`rounded-2xl p-8 ${
                 isDarkMode
-                  ? "bg-white text-gray-900"
-                  : "bg-gray-100 text-gray-900"
+                  ? "bg-[#E3E8EF] text-gray-900"
+                  : "bg-[#E3E8EF] text-gray-900"
               }`}
             >
-              <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
                 <svg
                   className="w-6 h-6 text-white"
                   fill="none"
@@ -682,11 +758,11 @@ const HomePage = () => {
             <div
               className={`rounded-2xl p-8 ${
                 isDarkMode
-                  ? "bg-white text-gray-900"
-                  : "bg-gray-100 text-gray-900"
+                  ? "bg-[#E3E8EF] text-gray-900"
+                  : "bg-[#E3E8EF] text-gray-900"
               }`}
             >
-              <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
                 <svg
                   className="w-6 h-6 text-white"
                   fill="none"
@@ -713,11 +789,11 @@ const HomePage = () => {
             <div
               className={`rounded-2xl p-8 ${
                 isDarkMode
-                  ? "bg-white text-gray-900"
-                  : "bg-gray-100 text-gray-900"
+                  ? "bg-[#E3E8EF] text-gray-900"
+                  : "bg-[#E3E8EF] text-gray-900"
               }`}
             >
-              <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
                 <svg
                   className="w-6 h-6 text-white"
                   fill="none"
@@ -744,11 +820,11 @@ const HomePage = () => {
             <div
               className={`rounded-2xl p-8 ${
                 isDarkMode
-                  ? "bg-white text-gray-900"
-                  : "bg-gray-100 text-gray-900"
+                  ? "bg-[#E3E8EF] text-gray-900"
+                  : "bg-[#E3E8EF] text-gray-900"
               }`}
             >
-              <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
                 <svg
                   className="w-6 h-6 text-white"
                   fill="none"
@@ -777,11 +853,11 @@ const HomePage = () => {
             <div
               className={`rounded-2xl p-8 ${
                 isDarkMode
-                  ? "bg-white text-gray-900"
-                  : "bg-gray-100 text-gray-900"
+                  ? "bg-[#E3E8EF] text-gray-900"
+                  : "bg-[#E3E8EF] text-gray-900"
               }`}
             >
-              <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
                 <svg
                   className="w-6 h-6 text-white"
                   fill="none"
@@ -811,12 +887,12 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div
-            className={`rounded-3xl p-12 mb-16 flex items-center justify-between ${
+            className={`rounded-3xl p-14 mb-16 flex items-center justify-between ${
               isDarkMode ? "bg-blue-600" : "bg-blue-500"
             }`}
           >
             <div className="flex-shrink-0 mr-12">
-              <div className="w-32 h-32 flex items-center justify-center">
+              <div className="w-52 h-52 flex items-center justify-center">
                 <div className="text-7xl">
                   <img src={courseLevel} alt="" />
                 </div>
@@ -1378,12 +1454,12 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div
-            className={`rounded-3xl p-12 mb-16 flex items-center gap-12 ${
+            className={`rounded-3xl p-14 mb-16 flex items-center gap-12 ${
               isDarkMode ? "bg-blue-600" : "bg-blue-500"
             }`}
           >
             <div className="flex-shrink-0">
-              <div className="w-48 h-48 flex items-center justify-center">
+              <div className="w-52 h-52 flex items-center justify-center">
                 <div className="text-9xl">
                   <img src={support} alt="" />
                 </div>
@@ -1581,7 +1657,7 @@ const HomePage = () => {
       {/* Footer */}
       <footer
         className={` text-white py-8 mt-16 ${
-          isDarkMode ? "bg-black" : "bg-[E0E0E0]"
+          isDarkMode ? "bg-[#121212]" : "bg-[E0E0E0]"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1663,7 +1739,7 @@ const HomePage = () => {
               >
                 Home
               </a>
-               <a
+              <a
                 href="#"
                 className={`text-sm hover:text-white transition-colors ${
                   isDarkMode ? "text-gray-500" : "text-black"
@@ -1671,7 +1747,7 @@ const HomePage = () => {
               >
                 Courses
               </a>
-               <a
+              <a
                 href="#"
                 className={`text-sm hover:text-white transition-colors ${
                   isDarkMode ? "text-gray-500" : "text-black"
@@ -1692,9 +1768,11 @@ const HomePage = () => {
 
           {/* Copyright */}
           <div className="text-center mt-8 pt-8 border-t border-gray-800">
-            <p  className={`text-sm hover:text-white transition-colors ${
-                  isDarkMode ? "text-gray-400" : "text-black"
-                }`}>
+            <p
+              className={`text-sm hover:text-white transition-colors ${
+                isDarkMode ? "text-gray-400" : "text-black"
+              }`}
+            >
               © 2025 Cubed Community. All rights reserved.
             </p>
           </div>

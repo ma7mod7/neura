@@ -87,7 +87,7 @@ export const DashboardPage = () => {
 
   const toggleTheme = () => setDarkMode(!darkMode);
 
-  const bgClass = darkMode ? "bg-[#0E0E10]" : "bg-gray-50";
+  const bgClass = darkMode ? "bg-[#0E0E10]" : "bg-[#EAEEF3]";
   const cardBgClass = darkMode ? "bg-gray-800" : "bg-white";
   const textClass = darkMode ? "text-white" : "text-gray-900";
   const secondaryTextClass = darkMode ? "text-gray-400" : "text-gray-600";
@@ -367,9 +367,9 @@ export const DashboardPage = () => {
       </div>
 
       {/* Footer */}
-       <footer
+         <footer
         className={` text-white py-8 mt-16 ${
-          darkMode ? "bg-black" : "bg-[E0E0E0]"
+          darkMode ? "bg-[#121212]" : "bg-[#E0E0E0]"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -442,27 +442,33 @@ export const DashboardPage = () => {
 
             {/* Quick Links */}
             <div className="flex items-center gap-6">
-              <span className="text-sm font-semibold">Fast Links</span>
+              <span
+                className={`text-sm font-semibold ${
+                  darkMode ? "text-white" : "text-black"
+                }`}
+              >
+                Fast Links
+              </span>
               <a
                 href="#"
                 className={`text-sm hover:text-white transition-colors ${
-                  darkMode ? "text-gray-500" : "text-black"
+                  darkMode ? "text-white" : "text-black"
                 }`}
               >
                 Home
               </a>
-               <a
+              <a
                 href="#"
                 className={`text-sm hover:text-white transition-colors ${
-                  darkMode ? "text-gray-500" : "text-black"
+                  darkMode ? "text-white" : "text-black"
                 }`}
               >
                 Courses
               </a>
-               <a
+              <a
                 href="#"
                 className={`text-sm hover:text-white transition-colors ${
-                  darkMode ? "text-gray-500" : "text-black"
+                  darkMode ? "text-white" : "text-black"
                 }`}
               >
                 Problems
@@ -470,7 +476,7 @@ export const DashboardPage = () => {
               <a
                 href="#"
                 className={`text-sm hover:text-white transition-colors ${
-                  darkMode ? "text-gray-500" : "text-black"
+                  darkMode ? "text-white" : "text-black"
                 }`}
               >
                 Community
@@ -479,10 +485,12 @@ export const DashboardPage = () => {
           </div>
 
           {/* Copyright */}
-          <div className="text-center mt-8 pt-8 border-t border-gray-800">
-            <p  className={`text-sm hover:text-white transition-colors ${
-                  darkMode ? "text-gray-400" : "text-black"
-                }`}>
+          <div className="text-center mt-8 pt-8  border-gray-800">
+            <p
+              className={`text-sm hover:text-white transition-colors ${
+                darkMode ? "text-[#93C5FD]" : "text-black"
+              }`}
+            >
               © 2025 Cubed Community. All rights reserved.
             </p>
           </div>

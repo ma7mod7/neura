@@ -87,9 +87,9 @@ export const LoginForm: React.FC = () => {
         <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-900"
         >
-          {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+          {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
         </button>
         {errors.password && (
           <p className="text-red-400 text-sm mt-1 ml-4">{errors.password.message}</p>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import { Badge } from "../components/ui/badge";
-import { Facebook, Linkedin, Github,SearchCode, Users2 } from "lucide-react";
+import { Facebook, Linkedin, Github, SearchCode, Users2 } from "lucide-react";
 // import { FaMagnifyingGlassCode, FaChildren } from "react-icons/fa6";
 import {
   Trophy,
@@ -140,15 +140,17 @@ const mockDeadlines: Deadline[] = [
   },
 ];
 
- const generateMockActivityData = (): ActivityData => {
+const generateMockActivityData = (): ActivityData => {
   const data: ActivityData = {};
   const today = new Date();
-  
+
   // Start from January 1st of current year
   const startOfYear = new Date(today.getFullYear(), 0, 1);
-  
+
   // Calculate days from start of year to today
-  const daysDiff = Math.floor((today.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24));
+  const daysDiff = Math.floor(
+    (today.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24)
+  );
 
   for (let i = 0; i <= daysDiff; i++) {
     const date = new Date(startOfYear);
@@ -292,7 +294,7 @@ export default function ProfilePage() {
           <div
             className={`rounded-2xl p-6 transition-colors ${
               darkMode
-                 ? "bg-gray-900 border border-gray-800"
+                ? "bg-gray-900 border border-gray-800"
                 : "bg-white border border-gray-200"
             }`}
           >
@@ -364,12 +366,12 @@ export default function ProfilePage() {
                   </div>
                   <div className="flex items-center gap-1 text-sm">
                     <Github
-                  className={`w-5 h-5 transition-colors ${
-                    darkMode
-                      ? "text-gray-400 group-hover:text-white"
-                      : "text-gray-600 group-hover:text-white"
-                  }`}
-                />
+                      className={`w-5 h-5 transition-colors ${
+                        darkMode
+                          ? "text-gray-400 group-hover:text-white"
+                          : "text-gray-600 group-hover:text-white"
+                      }`}
+                    />
                     <span
                       className={darkMode ? "text-gray-300" : "text-gray-700"}
                     >
@@ -378,48 +380,47 @@ export default function ProfilePage() {
                   </div>
                   <div className="flex items-center gap-1 text-sm">
                     <Calendar
-                  className={`w-5 h-5 transition-colors ${
-                    darkMode
-                      ? "text-gray-400 group-hover:text-white"
-                      : "text-gray-600 group-hover:text-white"
-                  }`}
-                />
+                      className={`w-5 h-5 transition-colors ${
+                        darkMode
+                          ? "text-gray-400 group-hover:text-white"
+                          : "text-gray-600 group-hover:text-white"
+                      }`}
+                    />
                     <span
                       className={darkMode ? "text-gray-400" : "text-gray-600"}
                     >
                       Joined January 2024
                     </span>
                   </div>
-                 
                 </div>
 
                 <div className="flex flex-wrap items-center gap-16 mb-4">
                   <div className="flex items-center gap-1 text-sm">
-                     <Users2
-                  className={`w-5 h-5 transition-colors ${
-                    darkMode
-                      ? " text-blue-500 group-hover:text-white"
-                      : "text-blue-600 group-hover:text-white"
-                  }`}
-                />
+                    <Users2
+                      className={`w-5 h-5 transition-colors ${
+                        darkMode
+                          ? " text-blue-500 group-hover:text-white"
+                          : "text-blue-600 group-hover:text-white"
+                      }`}
+                    />
                     <span
                       className={darkMode ? "text-gray-400" : "text-gray-600"}
                     >
-                       friends
+                      friends
                     </span>
                   </div>
                   <div className="flex items-center gap-1 text-sm">
                     <SearchCode
-                  className={`w-5 h-5 transition-colors ${
-                    darkMode
-                      ? "text-green-400 group-hover:text-white"
-                      : "text-green-600 group-hover:text-white"
-                  }`}
-                />
+                      className={`w-5 h-5 transition-colors ${
+                        darkMode
+                          ? "text-green-400 group-hover:text-white"
+                          : "text-green-600 group-hover:text-white"
+                      }`}
+                    />
                     <span
                       className={darkMode ? "text-gray-400" : "text-gray-600"}
                     >
-                       Languages
+                      Languages
                     </span>
                   </div>
                 </div>
@@ -768,7 +769,6 @@ export default function ProfilePage() {
                   activityData={activityData}
                   darkMode={darkMode}
                 />
-                
               </div>
             </div>
           </div>
@@ -932,9 +932,9 @@ export default function ProfilePage() {
         </div>
       </div>
       {/* Footer */}
-         <footer
+      <footer
         className={` text-white py-8 mt-16 ${
-          darkMode ? "bg-black" : "bg-[E0E0E0]"
+          darkMode ? "bg-[#121212]" : "bg-[#E0E0E0]"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1007,27 +1007,33 @@ export default function ProfilePage() {
 
             {/* Quick Links */}
             <div className="flex items-center gap-6">
-              <span className="text-sm font-semibold">Fast Links</span>
+              <span
+                className={`text-sm font-semibold ${
+                  darkMode ? "text-white" : "text-black"
+                }`}
+              >
+                Fast Links
+              </span>
               <a
                 href="#"
                 className={`text-sm hover:text-white transition-colors ${
-                  darkMode ? "text-gray-500" : "text-black"
+                  darkMode ? "text-white" : "text-black"
                 }`}
               >
                 Home
               </a>
-               <a
+              <a
                 href="#"
                 className={`text-sm hover:text-white transition-colors ${
-                  darkMode ? "text-gray-500" : "text-black"
+                  darkMode ? "text-white" : "text-black"
                 }`}
               >
                 Courses
               </a>
-               <a
+              <a
                 href="#"
                 className={`text-sm hover:text-white transition-colors ${
-                  darkMode ? "text-gray-500" : "text-black"
+                  darkMode ? "text-white" : "text-black"
                 }`}
               >
                 Problems
@@ -1035,7 +1041,7 @@ export default function ProfilePage() {
               <a
                 href="#"
                 className={`text-sm hover:text-white transition-colors ${
-                  darkMode ? "text-gray-500" : "text-black"
+                  darkMode ? "text-white" : "text-black"
                 }`}
               >
                 Community
@@ -1044,10 +1050,12 @@ export default function ProfilePage() {
           </div>
 
           {/* Copyright */}
-          <div className="text-center mt-8 pt-8 border-t border-gray-800">
-            <p  className={`text-sm hover:text-white transition-colors ${
-                  darkMode ? "text-gray-400" : "text-black"
-                }`}>
+          <div className="text-center mt-8 pt-8  border-gray-800">
+            <p
+              className={`text-sm hover:text-white transition-colors ${
+                darkMode ? "text-[#93C5FD]" : "text-black"
+              }`}
+            >
               © 2025 Cubed Community. All rights reserved.
             </p>
           </div>
@@ -1088,10 +1096,12 @@ export function ActivityCalendar({
   const today = new Date();
   const startOfYear = new Date(today.getFullYear(), 0, 1);
   const endOfYear = new Date(today.getFullYear(), 11, 31);
-  
+
   // Calculate days from start of year to today
-  const daysDiff = Math.floor((endOfYear.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24));
-  
+  const daysDiff = Math.floor(
+    (endOfYear.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24)
+  );
+
   const calendarData: { date: Date; count: number }[] = [];
 
   // Generate calendar data from start of year to today
@@ -1134,20 +1144,30 @@ export function ActivityCalendar({
               <div
                 key={dayIndex}
                 className={`w-4 h-4 rounded-sm ${getColorIntensity(day.count)}`}
-                title={`${day.date.toLocaleDateString()}: ${day.count} submissions`}
+                title={`${day.date.toLocaleDateString()}: ${
+                  day.count
+                } submissions`}
               />
             ))}
           </div>
         ))}
       </div>
       <div className="flex items-center gap-2 text-s">
-        <span className={darkMode ? "text-gray-400" : "text-gray-600"}>Less</span>
-        <div className={`w-3 h-3 rounded-sm ${darkMode ? "bg-gray-800" : "bg-gray-100"}`} />
+        <span className={darkMode ? "text-gray-400" : "text-gray-600"}>
+          Less
+        </span>
+        <div
+          className={`w-3 h-3 rounded-sm ${
+            darkMode ? "bg-gray-800" : "bg-gray-100"
+          }`}
+        />
         <div className="w-3 h-3 rounded-sm bg-green-200" />
         <div className="w-3 h-3 rounded-sm bg-green-400" />
         <div className="w-3 h-3 rounded-sm bg-green-600" />
         <div className="w-3 h-3 rounded-sm bg-green-800" />
-        <span className={darkMode ? "text-gray-400" : "text-gray-600"}>More</span>
+        <span className={darkMode ? "text-gray-400" : "text-gray-600"}>
+          More
+        </span>
       </div>
     </div>
   );
