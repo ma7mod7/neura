@@ -1,7 +1,6 @@
 import { api } from './api';
 import type { 
   LoginCredentials, 
-  RegisterCredentials, 
   RegisterFormData,
   RegisterPayload,
   LoginResponse, 
@@ -39,7 +38,7 @@ export const authService = {
         DiscordHandle: data.DiscordHandle,
       };
 
-      console.log('📤 Sending registration data:', payload);
+      console.log('📤 Sending registration data hhhhhhhhhh:', payload);
 
       const response = await api.post<LoginResponse>('/auth/register', payload);
       

@@ -16,8 +16,11 @@ export const loginUser = createAsyncThunk(
   async (credentials: LoginFormData, { rejectWithValue }) => {
     try {
       const response = await authApi.login(credentials);
+      console.log('Login successful:', response);
+      console.log(response)
       return response;
     } catch (error: any) {
+      console.error('Login failed:', error.message);
       return rejectWithValue(error.message || 'Login failed');
     }
   }
@@ -53,6 +56,7 @@ export const registerUser = createAsyncThunk(
   async (userData: RegisterFormData, { rejectWithValue }) => {
     try {
       const response = await authApi.register(userData);
+      console.log(response)
       return response;
     } catch (error: any) {
       return rejectWithValue(error.message || 'Registration failed');

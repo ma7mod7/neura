@@ -26,7 +26,7 @@ export const LoginForm: React.FC = () => {
   const onSubmit = async (data: LoginFormData) => {
     try {
       // Dispatch login action (unwrap() throws error if failed)
-      await dispatch(loginUser({ username: data.email, password: data.password })).unwrap();
+      await dispatch(loginUser({ userNameOrEmail: data.email, password: data.password })).unwrap();
 
       // ✅ After successful login → redirect to dashboard
       navigate('/dashboard', { replace: true });

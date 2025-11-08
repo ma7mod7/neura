@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { store } from './store';
-import {AppRoutes} from './routes';
+import { AppRoutes } from './routes';
 import { useAppDispatch } from './hooks';
 import { checkAuthStatus } from '../features/auth/slice/authSlice';
-import { ThemeProvider } from '../components/context/ThemeContext'; 
+import { ThemeProvider } from '../components/context/ThemeContext';
 // Create QueryClient instance
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,18 +28,18 @@ const AuthChecker: React.FC = () => {
     }
   }, [dispatch]);
 
-   return <AppRoutes />; ;
+  return <AppRoutes />;;
 };
 
 // Main App component with all providers
 const App: React.FC = () => {
- return (
+  return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider>
-          
-            <AuthChecker />
-          
+
+          <AuthChecker />
+
         </ThemeProvider>
       </QueryClientProvider>
     </Provider>
